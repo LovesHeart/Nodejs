@@ -1,0 +1,1 @@
+./bin/windows_amd64/sunny.exe clientid 3136e6d5f7df5042cd

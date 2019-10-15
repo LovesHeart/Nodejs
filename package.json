@@ -1,0 +1,24 @@
+{
+    "name": "wechat7",
+    "version": "1.0.0",
+    "main": "check.js",
+    "scripts": {
+        "start": "node app.js",
+        "ngrok": "./bin/ngrok.sh",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "description": "",
+    "dependencies": {
+        "ejs": "^2.7.1",
+        "glob": "^7.1.4",
+        "koa": "^2.10.0",
+        "mongoose": "^5.7.4",
+        "raw-body": "^2.4.1",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4",
+        "sha1": "^1.1.1",
+        "xml2js": "^0.4.22"
+    }
+}
