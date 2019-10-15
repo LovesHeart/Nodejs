@@ -3,7 +3,11 @@
     "version": "1.0.0",
     "main": "check.js",
     "scripts": {
+<<<<<<< HEAD
         "start": "node start.js",
+=======
+        "start": "node app.js",
+>>>>>>> newbranch
         "ngrok": "./bin/ngrok.sh",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -12,7 +16,13 @@
     "description": "",
     "dependencies": {
         "ejs": "^2.7.1",
+<<<<<<< HEAD
         "koa": "^2.8.2",
+=======
+        "glob": "^7.1.4",
+        "koa": "^2.10.0",
+        "mongoose": "^5.7.4",
+>>>>>>> newbranch
         "raw-body": "^2.4.1",
         "request": "^2.88.0",
         "request-promise": "^4.2.4",

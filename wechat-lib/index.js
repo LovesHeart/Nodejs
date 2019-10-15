@@ -1,9 +1,20 @@
+<<<<<<< HEAD
+=======
+const fs = require('fs')
+>>>>>>> newbranch
 const request = require('request-promise')
 //我们借助这个request的库来发送请求
 const base = 'https://api.weixin.qq.com/cgi-bin/'
 
 const api = {
+<<<<<<< HEAD
     accessToken: base + 'token?grant_type=client_credential'
+=======
+    accessToken: base + 'token?grant_type=client_credential',
+    temporary:{
+        upload:base+'media/upload?'
+    }
+>>>>>>> newbranch
 }
 
 module.exports = class Wechat {
@@ -38,7 +49,11 @@ module.exports = class Wechat {
                 // console.log(options.url)
                 const res = await request(options)
                 // console.log('res res res res res res ')
+<<<<<<< HEAD
                 console.log(res)
+=======
+                // console.log(res)
+>>>>>>> newbranch
                 return res
             }//捕获异常 直接打印异常
             catch(err){
@@ -81,7 +96,11 @@ module.exports = class Wechat {
         // console.log(url)
         //拼接完URL地址后发出一个请求
         const data = await this.request({ url })
+<<<<<<< HEAD
         // console.log(data)
+=======
+        console.log(data)
+>>>>>>> newbranch
         const now = new Date().getTime()
         const expiresIn = now + (data.expires_in - 20) * 1000//now的单位是ms -20得s *1000得ms
 
@@ -107,5 +126,39 @@ module.exports = class Wechat {
         //在业务的wechat目录下
     }
 
+<<<<<<< HEAD
 
+=======
+    uploadMaterial(token,type, material, permanent=false){
+        let form={}
+        let url=api.temporary.upload
+
+        if(permanent){//继续构建表单
+
+        }
+        form.media=fs.createReadStream(material)//创建一个读文件的流//传入material:文件路径//就知道你material要写成meterial.c
+        //拼接上传地址
+        
+        let uploadUrl=`${url}access_token=${token}&type=${type}`
+
+        const options = {
+            method:'POST',
+            url:uploadUrl,
+            json:true,
+            formData:form
+        }//这里可以这样写json的options:加formData:form
+        //这里少了一个动作，把form表单拼装上去
+
+        return options
+    }
+//封装成一个通用的函数
+    async handle(opration,...args)//opration为方法名//通过这种写法可以传入多个参数
+    {
+        const tokenData=await this.fetchAccessToken()
+        const options=this[opration](tokenData.access_token,...args)//就是我们传入的方法名+传参
+        const data=await this.request(options)
+
+        return data
+    }
+>>>>>>> newbranch
 }

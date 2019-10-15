@@ -2,9 +2,20 @@
 //schema 文档,用来描述数据里有哪些字段,每个字段类型是什么
 // model 代表了这类数据的数据模型
 //entity 一条数据实体/实体
+<<<<<<< HEAD
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+=======
+
+//上一节我们通过mongodb数据库来存储了票据信息
+//而票据的数据结构是通过mongoose来进行定义的
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+//mongoose下Schema这个构造函数来创建了一个定义模型的骨架
+//在它里面我们增加了这条数据所需要的字段
+//以及他们的数据类型和定义
+>>>>>>> newbranch
 const TokenSchema=new Schema({//为当前Token的Schema
     name:String,//accessToken
     token:String,
@@ -22,7 +33,13 @@ const TokenSchema=new Schema({//为当前Token的Schema
 })
 //Token的Schema就创建好了
 //然后给它增加一个前置的方法或者说是中间件方法
+<<<<<<< HEAD
 TokenSchema.pre('save', function(next){
+=======
+TokenSchema.pre('save', function(next){//TokenSchema上面可以有一个preSave方法
+    //就是在mongodb每一条数据存储之前都有一个中间件这样一个方法来判断当前数据上的校验规则之类的
+
+>>>>>>> newbranch
     // 每一条数据存储之前,我们都让它来执行这个方法
     if(this.isNew){//如果这条数据是新增的
         this.meta.createdAt=this.meta.updatedAt=Date.now()
@@ -50,7 +67,11 @@ TokenSchema.statics={
 
     async saveAccessToken(data){
         //很简单,首先查一下
+<<<<<<< HEAD
         const token=await this.findOne({
+=======
+        let token=await this.findOne({
+>>>>>>> newbranch
             name:'access_token'
         })
         //如果查到了
@@ -58,7 +79,11 @@ TokenSchema.statics={
             token.token=data.access_token
             token.expire_in=data.expire_in
         }else{
+<<<<<<< HEAD
             //如果没有，创建一个Token的实体也就是entity
+=======
+            //如果没有，创建一个Token的数据实体也就是entity
+>>>>>>> newbranch
             token=new Token({
                 name:'access_token',
                 token:data.access_token,
@@ -74,4 +99,11 @@ TokenSchema.statics={
 }
 
 const Token = mongoose.model('Token',TokenSchema)
+<<<<<<< HEAD
 //第一个参数传入这个数据模型的名字就是Token,第二个参数就是根据什么Schema来创建这个数据模型
+=======
+//第一个参数传入这个数据模型的名字就是Token,第二个参数就是根据什么Schema来创建这个数据模型
+//生成模型(initSchema)后我们可以在任意位置通过mongoose来拿到这个model
+//拿到model后可以通过model独有的statics静态方法来拿到一些数据对这些数据做一些更新操作
+//然后在一条数据也就是数据实体entity 
+>>>>>>> newbranch
